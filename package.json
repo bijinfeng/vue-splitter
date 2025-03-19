@@ -1,8 +1,8 @@
 {
-  "name": "vue-splitter",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@pingtou/vue-splitter",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.js",
   "typings": "./dist/type/index.d.ts",
@@ -10,7 +10,11 @@
     "build": "vue-tsc --declaration --emitDeclarationOnly && vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "prepare": "simple-git-hooks"
+  },
+  "peerDependencies": {
+    "vue": ">=3"
   },
   "dependencies": {
     "vue": "^3.5.13"
@@ -23,13 +27,18 @@
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.22.0",
     "eslint-plugin-format": "^1.0.1",
+    "lint-staged": "^15.5.0",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.13",
     "vue-tsc": "^2.2.4"
   },
-  "peerDependencies": {
-    "vue": ">=3"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
